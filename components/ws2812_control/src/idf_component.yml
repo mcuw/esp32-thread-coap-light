@@ -1,0 +1,6 @@
+## IDF Component Manager Manifest File
+dependencies:
+  idf:
+    version: '>=4.1.0'
+  # https://components.espressif.com/components/espressif/led_strip
+  espressif/led_strip: ^3.0.3

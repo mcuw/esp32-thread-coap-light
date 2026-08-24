@@ -1,0 +1,6 @@
+build/
+managed_components/
+
+# device depended and generated configuration
+sdkconfig
+sdkconfig.old
