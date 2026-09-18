@@ -1,5 +1,5 @@
-| Supported Targets | ESP32-C6 | ESP32-S31 |
-| ----------------- | -------- | --------- |
+| Supported Targets | ESP32-C6 |
+| ----------------- | -------- |
 
 # Thread CoAP light server
 
@@ -49,7 +49,7 @@ Now you'll get an OpenThread command line shell.
 
 The `help` command will print all of the supported commands.
 ```bash
-esp32h2> ot help
+esp32c6> ot help
 I(7058) OPENTHREAD:[INFO]-CLI-----: execute command: help
 bbr
 bufferinfo
@@ -95,20 +95,20 @@ Done
 ```
 Now the first device has formed a Thread network as a leader. Follow the open commissioning with the [esp32-thread-br](https://github.com/mcuw/esp32-thread-br). Get some information which will be used in next steps:
 ```bash
-esp32h2> ot ipaddr
+esp32c6> ot ipaddr
 fdde:ad00:beef:0:0:ff:fe00:fc00
 fdde:ad00:beef:0:0:ff:fe00:8000
 fdde:ad00:beef:0:a7c6:6311:9c8c:271b
 fe80:0:0:0:5c27:a723:7115:c8f8
 
 # Get the Active Dataset
-esp32h2> ot dataset active -x
+esp32c6> ot dataset active -x
 0e080000000000010000000300001835060004001fffe00208fe7bb701f5f1125d0708fd75cbde7c6647bd0510b3914792d44f45b6c7d76eb9306eec94030f4f70656e5468726561642d35383332010258320410e35c581af5029b054fc904a24c2b27700c0402a0fff8
 ```
 
 # After some seconds
 
-esp32h2> ot state
+esp32c6> ot state
 router  # child is also a valid state
 Done
 ```
@@ -179,11 +179,11 @@ aiocoap-client -m PUT "coap://[Adresse]/light" \
 
 ---
 
-Warum es vier Adressen gibt
+Why there are multiple address
 
-Jedes Thread-Gerät bekommt automatisch mehrere IPv6-Adressen mit unterschiedlichem Zweck:
+Each Thread-device get Automatic Ally several IPv6-Adress for different usecases.
 
-Adresse	Typ	Eigenschaft
+Adress	Type	Property
 fd36:122:1738:1:...	OMR (Off-Mesh-Routable)	Aus eurem BR-Präfix, für Zugriff von außerhalb des Mesh
 fd51:...:0:ff:fe00:e801	RLOC (Routing Locator)	Kodiert die aktuelle RLOC16 direkt in der Adresse – ändert sich, wenn das Gerät seine Rolle wechselt (z. B. Child → Router)
 fd51:...:63fc:...	ML-EID (Mesh-Local EID)	Stabile, zufällige Identität innerhalb des Mesh-Präfixes – ändert sich nicht bei Rollenwechsel
